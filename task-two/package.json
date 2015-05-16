@@ -1,30 +1,10 @@
 {
-  "name": "js-automation-examples",
+  "name": "task-two",
   "version": "0.1.0",
-  "description": "Some examples of JS-powered automation",
+  "description": "Simple JS compilation",
   "main": "index.js",
-  "scripts": {
-    "browserify": "browserify src/js/index.js -t babelify -o dist/js/bundled.js",
-    "compress": "uglifyjs dist/js/bundled.js -o dist/js/bundled-uglified.js",
-    "clean": "rimraf dist/js/*.*",
-    "prejs:io": "npm run clean",
-    "js:io": "npm run browserify && npm run compress",
-    "prejs:stream": "npm run clean",
-    "js:stream": "browserify src/js/index.js -t babelify | uglifyjs > dist/js/bundled-uglified.js",
-    "bs": "browser-sync start --files \"dist/**/*\" --server",
-    "watch": "watch \"npm run js:stream\" src/js",
-    "dev": "parallelshell \"npm run bs\" \"npm run watch\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/davidtheclark/js-automation-examples.git"
-  },
   "author": "David Clark",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/davidtheclark/js-automation-examples/issues"
-  },
-  "homepage": "https://github.com/davidtheclark/js-automation-examples#readme",
   "dependencies": {
     "babelify": "^6.1.1",
     "browser-sync": "^2.7.1",
@@ -52,5 +32,17 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watch": "^0.16.0"
+  },
+  "scripts": {
+    "browserify": "browserify src/js/index.js -t babelify -o dist/js/bundled.js",
+    "compress": "uglifyjs dist/js/bundled.js -o dist/js/bundled-uglified.js",
+    "clean": "rimraf dist/js/*.*",
+    "prejs:io": "npm run clean",
+    "js:io": "npm run browserify && npm run compress",
+    "prejs:stream": "npm run clean",
+    "js:stream": "browserify src/js/index.js -t babelify | uglifyjs > dist/js/bundled-uglified.js",
+    "bs": "browser-sync start --files \"dist/**/*\" --server",
+    "watch": "watch \"npm run js:stream\" src/js",
+    "dev": "parallelshell \"npm run bs\" \"npm run watch\""
   }
 }
