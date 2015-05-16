@@ -1,5 +1,4 @@
 var grunt = require('grunt');
-var autoprefixer = require('autoprefixer-core');
 require('load-grunt-tasks')(grunt);
 
 grunt.initConfig({
@@ -20,6 +19,12 @@ grunt.initConfig({
       files: {
         'dist/js/bundled-uglified.js': 'dist/js/bundled.js'
       }
+    }
+  },
+
+  eslint: {
+    js: {
+      src: ['src/js/**/*.js']
     }
   },
 
@@ -54,6 +59,8 @@ grunt.initConfig({
   }
 });
 
-grunt.registerTask('js', ['clean', 'browserify', 'uglify']);
+grunt.loadNpmTasks('gruntify-eslint');
+
+grunt.registerTask('js', ['clean', 'eslint', 'browserify', 'uglify']);
 grunt.registerTask('dev', ['browserSync', 'watch']);
 grunt.registerTask('default', ['dev']);

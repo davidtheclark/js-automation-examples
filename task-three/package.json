@@ -1,0 +1,35 @@
+{
+  "name": "task-three",
+  "version": "0.1.0",
+  "description": "Shareable a React component",
+  "main": "index.js",
+  "author": "David Clark",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^5.4.3",
+    "babel-loader": "^5.1.2",
+    "del": "^1.1.1",
+    "eslint-loader": "^0.11.2",
+    "eslint-plugin-react": "^2.3.0",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^5.1.0",
+    "load-grunt-tasks": "^3.1.0",
+    "node-libs-browser": "^0.5.0",
+    "react": "^0.13.3",
+    "rimraf": "^2.3.3",
+    "run-sequence": "^1.1.0",
+    "webpack": "^1.9.6",
+    "webpack-dev-server": "^1.8.2"
+  },
+  "scripts": {
+    "clean:globals": "rimraf dist/js/*.*",
+    "clean:modules": "rimraf dist-modules",
+    "clean": "npm run clean:globals && npm run clean:modules",
+    "build:globals": "webpack",
+    "build:modules": "babel src/js --out-dir dist/modules",
+    "prebuild": "npm run clean",
+    "build": "npm run build:globals && npm run build:modules",
+    "predev": "npm run clean:globals",
+    "dev": "webpack-dev-server --watch"
+  }
+}

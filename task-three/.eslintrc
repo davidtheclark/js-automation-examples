@@ -1,5 +1,9 @@
 ecmaFeatures:
   modules: true
+  jsx: true
+
+plugins:
+  - react
 
 env:
   es6: true
@@ -8,3 +12,5 @@ env:
 
 rules:
   quotes: [2, "single"]
+  # Avoid a bug ...
+  no-shadow: 0

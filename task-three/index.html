@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Automation Examples</title>
+</head>
+<body>
+
+  <h1>Here's a special list:</h1>
+  <div id="container"></div>
+
+  <script src="node_modules/react/dist/react.min.js"></script>
+  <script src="dist/js/bundled-uglified.js"></script>
+
+  <script>
+    React.render(
+      React.createElement(SpecialList, { startWith: 3 }),
+      document.getElementById('container')
+    );
+  </script>
+</body>
+</html>
