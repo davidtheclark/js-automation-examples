@@ -3,6 +3,7 @@ var autoprefixer = require('autoprefixer-core');
 require('load-grunt-tasks')(grunt);
 
 grunt.initConfig({
+
   sass: {
     options: {
       outputStyle: 'expanded'
@@ -13,6 +14,7 @@ grunt.initConfig({
       }
     }
   },
+
   postcss: {
     options: {
       map: false,
@@ -26,6 +28,7 @@ grunt.initConfig({
       }
     }
   },
+
   cssmin: {
     dist: {
       files: {
@@ -33,18 +36,38 @@ grunt.initConfig({
       }
     }
   },
+
   clean: {
     css: {
       src: 'dist/css/*'
     },
-    js: {
-      src: 'dist/js/*'
-    },
     dist: {
       src: 'dist'
+    }
+  },
+
+  watch: {
+    css: {
+      files: 'src/scss/*.scss',
+      tasks: ['style']
+    }
+  },
+
+  browserSync: {
+    options: {
+      watchTask: true,
+      server: './'
+    },
+    dev: {
+      bsFiles: {
+        src: [
+          'dist/css/compiled-prefixed-minified.css'
+        ]
+      }
     }
   }
 });
 
 grunt.registerTask('style', ['clean:css', 'sass', 'postcss', 'cssmin']);
-grunt.registerTask('default', ['style']);
+grunt.registerTask('dev', ['browserSync', 'watch']);
+grunt.registerTask('default', ['dev']);
