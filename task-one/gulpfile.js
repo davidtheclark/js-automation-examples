@@ -7,6 +7,8 @@ var gulpSass = require('gulp-sass');
 var gulpCssmin = require('gulp-minify-css');
 var gulpRename = require('gulp-rename');
 
+// Compile Sass to CSS, add vendor prefixes, minify,
+// and save it into dist/
 gulp.task('style', ['clean'], function() {
   return gulp.src('src/scss/main.scss')
     .pipe(gulpSass())
@@ -18,10 +20,12 @@ gulp.task('style', ['clean'], function() {
     .pipe(gulp.dest('dist/css'))
 });
 
+// Cleanup dist
 gulp.task('clean', function(cb) {
   del('dist/css/*', cb);
 });
 
+// Re-compile and refresh on save
 gulp.task('dev', ['style'], function() {
   var bs = browserSync.create();
   bs.init({

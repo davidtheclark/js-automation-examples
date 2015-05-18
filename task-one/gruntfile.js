@@ -3,6 +3,7 @@ var autoprefixer = require('autoprefixer-core');
 
 grunt.initConfig({
 
+  // Compile SCSS to CSS
   sass: {
     options: {
       outputStyle: 'expanded'
@@ -14,6 +15,7 @@ grunt.initConfig({
     }
   },
 
+  // Add vendor prefixes to compiled CSS
   postcss: {
     options: {
       map: false,
@@ -28,6 +30,7 @@ grunt.initConfig({
     }
   },
 
+  // Minify compiled, prefixed CSS
   cssmin: {
     dist: {
       files: {
@@ -36,6 +39,7 @@ grunt.initConfig({
     }
   },
 
+  // Cleanup dist/ files
   clean: {
     css: {
       src: 'dist/css/*'
@@ -45,6 +49,7 @@ grunt.initConfig({
     }
   },
 
+  // Re-compile styles on save
   watch: {
     css: {
       files: 'src/scss/*.scss',
@@ -52,6 +57,7 @@ grunt.initConfig({
     }
   },
 
+  // Re-inject styles into the browser when they change
   browserSync: {
     options: {
       watchTask: true,
@@ -68,6 +74,7 @@ grunt.initConfig({
   }
 });
 
+// Load tasks (notice non-standard pattern)
 grunt.loadNpmTasks('grunt-sass');
 grunt.loadNpmTasks('grunt-postcss');
 grunt.loadNpmTasks('grunt-contrib-clean');
@@ -75,6 +82,7 @@ grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-browser-sync');
 
+// Register commands that sequentially, synchronously run other others
 grunt.registerTask('style', ['clean:css', 'sass', 'postcss', 'cssmin']);
 grunt.registerTask('dev', ['browserSync', 'watch']);
 grunt.registerTask('default', ['dev']);
