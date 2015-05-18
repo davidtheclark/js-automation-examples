@@ -23,7 +23,7 @@ gulp.task('js:modules', function() {
 gulp.task('js', ['js:globals', 'js:modules']);
 
 gulp.task('clean', function(cb) {
-  del('dist/js/*', cb);
+  del('dist/**/*.*', cb);
 });
 
 gulp.task('dev', function() {
@@ -31,8 +31,11 @@ gulp.task('dev', function() {
 
   new WebpackDevServer(compiler)
     .listen(8080, 'localhost', function(err) {
-      if(err) { throw err; }
-      console.log('[webpack-dev-server]', 'http://localhost:8080/webpack-dev-server/index.html');
+      if (err) { throw err; }
+      console.log(
+        '[webpack-dev-server]',
+        'http://localhost:8080/webpack-dev-server/index.html'
+      );
   });
 });
 

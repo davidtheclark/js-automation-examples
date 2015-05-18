@@ -1,5 +1,5 @@
 var del = require('del');
-var browserSync = require('browser-sync').create();
+var browserSync = require('browser-sync');
 var gulp = require('gulp');
 var gulpPostcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer-core');
@@ -23,12 +23,13 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('dev', ['style'], function() {
-  browserSync.init({
+  var bs = browserSync.create();
+  bs.init({
     server: './'
   });
 
   gulp.watch('src/scss/*.scss', ['style']);
-  gulp.watch('dist/**/*.*').on('change', browserSync.reload);
+  gulp.watch('dist/**/*.*').on('change', bs.reload);
 })
 
 gulp.task('default', ['dev']);

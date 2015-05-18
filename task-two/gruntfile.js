@@ -1,5 +1,4 @@
 var grunt = require('grunt');
-require('load-grunt-tasks')(grunt);
 
 grunt.initConfig({
 
@@ -60,6 +59,11 @@ grunt.initConfig({
 });
 
 grunt.loadNpmTasks('gruntify-eslint');
+grunt.loadNpmTasks('grunt-contrib-uglify');
+grunt.loadNpmTasks('grunt-contrib-clean');
+grunt.loadNpmTasks('grunt-contrib-watch');
+grunt.loadNpmTasks('grunt-browser-sync');
+grunt.loadNpmTasks('grunt-browserify');
 
 grunt.registerTask('js', ['clean', 'eslint', 'browserify', 'uglify']);
 grunt.registerTask('dev', ['browserSync', 'watch']);

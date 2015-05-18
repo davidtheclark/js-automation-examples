@@ -20,8 +20,9 @@
     "grunt-sass": "^1.0.0",
     "gulp": "^3.8.11",
     "gulp-minify-css": "^1.1.1",
+    "gulp-postcss": "^5.1.6",
+    "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.0.1",
-    "load-grunt-tasks": "^3.1.0",
     "node-sass": "^3.1.0",
     "parallelshell": "^1.1.1",
     "postcss": "^4.1.10",
@@ -32,14 +33,14 @@
   "scripts": {
     "sass": "node-sass src/scss/main.scss dist/css/compiled.css",
     "prefix": "autoprefixer dist/css/compiled.css --browsers \"last 2 version\" --no-map -o dist/css/compiled-prefixed.css",
-    "compress": "cleancss dist/css/compiled-prefixed.css -o dist/css/compiled-prefixed-minified.css",
+    "minify": "cleancss dist/css/compiled-prefixed.css -o dist/css/compiled-prefixed-minified.css",
     "clean": "rimraf dist/css/*.*",
     "prestyle:io": "npm run clean",
-    "style:io": "npm run sass && npm run prefix && npm run compress",
+    "style:io": "npm run sass && npm run prefix && npm run minify",
     "prestyle:stream": "npm run clean",
     "style:stream": "node-sass src/scss/main.scss | autoprefixer --browsers \"last 2 version\" -o - | cleancss > dist/css/compiled-prefixed-minified.css",
-    "bs": "browser-sync start --files \"dist/**/*\" --server",
     "watch": "watch \"npm run style:stream\" src/scss",
+    "bs": "browser-sync start --files \"dist/**/*\" --server",
     "dev": "parallelshell \"npm run bs\" \"npm run watch\""
   }
 }

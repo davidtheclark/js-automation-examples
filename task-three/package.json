@@ -23,7 +23,7 @@
   },
   "scripts": {
     "clean:globals": "rimraf dist/js/*.*",
-    "clean:modules": "rimraf dist-modules",
+    "clean:modules": "rimraf dist/modules/*.*",
     "clean": "npm run clean:globals && npm run clean:modules",
     "build:globals": "webpack",
     "build:modules": "babel src/js --out-dir dist/modules",

@@ -1,6 +1,5 @@
 var grunt = require('grunt');
 var autoprefixer = require('autoprefixer-core');
-require('load-grunt-tasks')(grunt);
 
 grunt.initConfig({
 
@@ -61,12 +60,20 @@ grunt.initConfig({
     dev: {
       bsFiles: {
         src: [
-          'dist/css/compiled-prefixed-minified.css'
+          'dist/css/compiled-prefixed-minified.css',
+          'index.html'
         ]
       }
     }
   }
 });
+
+grunt.loadNpmTasks('grunt-sass');
+grunt.loadNpmTasks('grunt-postcss');
+grunt.loadNpmTasks('grunt-contrib-clean');
+grunt.loadNpmTasks('grunt-contrib-cssmin');
+grunt.loadNpmTasks('grunt-contrib-watch');
+grunt.loadNpmTasks('grunt-browser-sync');
 
 grunt.registerTask('style', ['clean:css', 'sass', 'postcss', 'cssmin']);
 grunt.registerTask('dev', ['browserSync', 'watch']);

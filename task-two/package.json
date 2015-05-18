@@ -22,7 +22,6 @@
     "gulp-eslint": "^0.12.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.2.0",
-    "load-grunt-tasks": "^3.1.0",
     "parallelshell": "^1.1.1",
     "rimraf": "^2.3.3",
     "uglify-js": "^2.4.21",
@@ -32,15 +31,15 @@
   },
   "scripts": {
     "lint": "eslint src",
-    "browserify": "browserify src/js/index.js -t babelify -o dist/js/bundled.js",
-    "compress": "uglifyjs dist/js/bundled.js -o dist/js/bundled-uglified.js",
     "clean": "rimraf dist/js/*.*",
+    "browserify": "browserify src/js/index.js -t babelify -o dist/js/bundled.js",
+    "uglify": "uglifyjs dist/js/bundled.js -o dist/js/bundled-uglified.js",
     "prejs:io": "npm run lint && npm run clean",
-    "js:io": "npm run browserify && npm run compress",
+    "js:io": "npm run browserify && npm run uglify",
     "prejs:stream": "npm run lint && npm run clean",
     "js:stream": "browserify src/js/index.js -t babelify | uglifyjs > dist/js/bundled-uglified.js",
-    "bs": "browser-sync start --files \"dist/**/*\" --server",
     "watch": "watch \"npm run js:stream\" src/js",
+    "bs": "browser-sync start --files \"dist/**/*\" --server",
     "dev": "parallelshell \"npm run bs\" \"npm run watch\""
   }
 }

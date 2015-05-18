@@ -31,7 +31,7 @@ gulp.task('clean', function(cb) {
   del('dist/js/*', cb);
 });
 
-gulp.task('watch', ['js'], function() {
+gulp.task('dev', ['js'], function() {
   browserSync.init({
     server: './'
   });
@@ -40,4 +40,4 @@ gulp.task('watch', ['js'], function() {
   gulp.watch('dist/**/*.*').on('change', browserSync.reload);
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['dev']);
