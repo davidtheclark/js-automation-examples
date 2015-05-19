@@ -1,5 +1,7 @@
 # js-automation-examples
 
+To play with one of the tasks, run `npm install` within the task's directory first, to get that task's dependencies.
+
 ## Task One
 
 Author styles in multiple SCSS files without vendor prefixes.
