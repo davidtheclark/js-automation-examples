@@ -1,7 +1,7 @@
 {
   "name": "task-three",
   "version": "0.1.0",
-  "description": "Shareable a React component",
+  "description": "Bundling for distribution",
   "main": "index.js",
   "author": "David Clark",
   "license": "MIT",

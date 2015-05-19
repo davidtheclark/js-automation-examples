@@ -10,9 +10,12 @@ var vinylSource = require('vinyl-source-stream');
 var vinylBuffer = require('vinyl-buffer');
 
 gulp.task('js', ['clean', 'lint'], function() {
+  // Browserify is not a gulp plugin: we're just using
+  // its JS API
   return browserify('src/js/index.js')
     .transform(babelify)
     .bundle()
+    // Then we transform it into the gulp vinyl format
     .pipe(vinylSource('bundled.js'))
     .pipe(vinylBuffer())
     .pipe(gulpUglify())
@@ -21,6 +24,7 @@ gulp.task('js', ['clean', 'lint'], function() {
 });
 
 gulp.task('lint', function() {
+  // This is much more code than running the ESLint CLI ...
   return gulp.src('src/js/**/*.js')
     .pipe(gulpEslint())
     .pipe(gulpEslint.format())
